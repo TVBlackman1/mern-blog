@@ -1,0 +1,23 @@
+{
+  "name": "mern-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server":"nodemon app.js"
+  },
+  "keywords": [
+    "node",
+    "nodejs"
+  ],
+  "author": "tvblackman1 <vbif.misha2012@yandex.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.3",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
