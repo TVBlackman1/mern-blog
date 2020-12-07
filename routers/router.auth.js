@@ -7,10 +7,12 @@ router.use((req, res, next) => {
     next()
 })
 
+// /api/auth/login
 router.get('/login', (req, res) => {
     res.send("Login page")
 })
 
+// /api/auth/register
 router.get('/register', (req, res) => {
     res.send("Register page")
 })
