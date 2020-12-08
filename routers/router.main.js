@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.use((req, res, next) => {
-    const date = (new Date().toLocaleDateString())
-    console.log(`${date}: ${req.baseUrl}`)
-    next()
-})
+const requestDatetime = require('../middleware/request-datetime')
+router.use(requestDatetime)
 
 // /api/main/
 router.get('/', (req, res) => {
