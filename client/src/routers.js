@@ -6,6 +6,8 @@ import { ProfilePage } from "./pages/ProfilePage"
 import {
     Switch,
     Route,
+    Redirect
+
 } from "react-router-dom";
 
 
@@ -22,6 +24,7 @@ export const Routers = () => {
                 <Route path={"/profile"}>
                     <ProfilePage />
                 </Route>
+                <Redirect to={"/main"} />
             </Switch>
         </React.Fragment>
     )

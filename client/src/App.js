@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { Routers } from "./routers"
-import 'materialize-css'
+import {NavBar} from "./component/NavBar";
+import {ThemeProvider} from "./context/ThemeContext";
+import "./styles/app.css"
 
-function App() {
-  return (
-    <div className="App">
-      Hello world
-      <BrowserRouter>
-        <Routers />
-      </BrowserRouter>
-    </div>
+
+export default function App() {
+
+    return (
+        <ThemeProvider>
+            <div className="App">
+                <BrowserRouter>
+                    <NavBar />
+                    <Routers />
+                </BrowserRouter>
+            </div>
+        </ThemeProvider>
   );
 }
-
-export default App;
