@@ -5,12 +5,21 @@ const requestDatetime = require('../middleware/request-datetime')
 router.use(requestDatetime)
 
 // /api/main/
-router.get('/', (req, res) => {
-    res.send("Main page")
+router.post('/', (req, res) => {
+    const actualNews = {
+        recent: {
+            "Action 1":"Description 1",
+            "Action 2":"Description 2",
+            "Action 3":"Description 3",
+            "Action 4":"Description 4",
+            "Action 5":"Description 5",
+        }
+    }
+    res.json(actualNews)
 })
 
 // /api/main/:profileName
-router.get('/:profileName', (req, res) => {
+router.post('/:profileName', (req, res) => {
     res.send("Page of " + req.params.profileName)
 })
 
