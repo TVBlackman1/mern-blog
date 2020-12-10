@@ -11,7 +11,6 @@ export const ProfilePage = () => {
         const data = await request('/api/main', 'POST')
         console.log(data)
         setLoadedNews(data)
-        console.log(loadedNews)
     }, [loadedNews])
 
 
@@ -26,8 +25,7 @@ export const ProfilePage = () => {
         <div className={styleBackground}>
             <h1>Profile page</h1>
             <button onClick={getRecentNews}>get recent news</button>
-            {loadedNews && <RecentNews>loadedNews</RecentNews>}
-            {/*{loadedNews && <h1>hello</h1>}*/}
+            {loadedNews && <RecentNews news={loadedNews} />}
             <h2>ohoho</h2>
         </div>
     )

@@ -12,14 +12,14 @@ export const RecentNews = ({news}) => {
     })
 
 
-    console.log(news)
+    console.log(Object.keys(news.recent))
     return (
-        // <ul id="nav-mobile" className="left hide-on-med-and-down">
-        //     {news.recent.map(function(object, i){
-        //         return <li className="collection-item" obj={object} key={i} />;
-        //     })}
-        // </ul>
-        <h1>hello</h1>
+        <ul id="nav-mobile" className="left hide-on-med-and-down">
+            {Object.keys(news.recent).map(function(newsTitle, i){
+                return <li className="collection-item" key={i}>{newsTitle}</li>;
+            })}
+        </ul>
+        // <h1>hello</h1>
 
     )
 }
