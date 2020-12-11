@@ -4,6 +4,7 @@ import classNames from "classnames";
 import {useTheme} from "../context/ThemeContext";
 import {useServerRequest} from "../hooks/useServerRequest";
 import {RecentNews} from "../component/RecentNews";
+import newsIcon from '../icons/news-icon.png'
 
 
 export const MainPage = () => {
@@ -26,7 +27,11 @@ export const MainPage = () => {
     return (
         <div className={styleBackground}>
             <h1>Main page</h1>
-            <button onClick={getRecentNews}>get recent news</button>
+            <button className="waves-effect waves-light btn" onClick={getRecentNews}>
+                {/*<img className="material-icons left" src={newsIcon} alt={"newsIcon"} />*/}
+                {/*<i className="large material-icons">{insert_chart}</i>*/}
+                Latest news
+            </button>
             {loadedNews && <RecentNews news={loadedNews} />}
             <h2>ohoho</h2>
         </div>
