@@ -4,6 +4,7 @@ import classNames from "classnames";
 import {useTheme} from "../context/ThemeContext";
 import {useServerRequest} from "../hooks/useServerRequest";
 import {RecentNews} from "../component/RecentNews";
+import MaterialIcon, { colorPalette } from "material-icons-react";
 import newsIcon from '../icons/news-icon.png'
 
 
@@ -28,12 +29,12 @@ export const MainPage = () => {
         <div className={styleBackground}>
             <h1>Main page</h1>
             <button className="waves-effect waves-light btn" onClick={getRecentNews}>
-                {/*<img className="material-icons left" src={newsIcon} alt={"newsIcon"} />*/}
-                {/*<i className="large material-icons">{insert_chart}</i>*/}
+                <MaterialIcon icon="library_books" size='small'/>
                 Latest news
             </button>
-            {loadedNews && <RecentNews news={loadedNews} />}
-            <h2>ohoho</h2>
+            <div className={"container"}>
+                {loadedNews && <RecentNews news={loadedNews} />}
+            </div>
         </div>
     )
 }

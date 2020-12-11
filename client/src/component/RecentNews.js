@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState }from 'react'
 import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
 import {useTheme} from '../context/ThemeContext'
@@ -6,23 +6,45 @@ import {useTheme} from '../context/ThemeContext'
 
 export const RecentNews = ({news}) => {
     const theme = useTheme()
+    const [activeNews, setActiveNews] = useState(0)
 
-    const styleNav = classNames({
+    const styleLi = classNames({
         "grey darken-2" : theme.darkMode
     })
 
+    const setActiveOnNews = (i) => {
+        setActiveNews(i)
+    }
 
     console.log(Object.keys(news.recent))
     return (
-        <ul id="nav-mobile" className="left hide-on-med-and-down">
-            {Object.keys(news.recent).map(function(newsTitle, i){
-                return <li className="collection-item" key={i}>{newsTitle}</li>;
-            })}
-        </ul>
-        // <h1>hello</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Details</th>
+            </tr>
+            </thead>
 
+            <tbody>
+            <tr>
+                <td>
+                    <ul id="nav-mobile" className="left collection grey darken-2">
+                        {Object.keys(news.recent).map(function(newsTitle, i){
+                            return <li className={
+                                classNames( styleLi, {
+                                    "active" : i === activeNews,
+                                    "collection-item": true
+                                })
+                            } key={i} onClick={() => setActiveOnNews(i)}>{newsTitle}</li>;
+                        })}
+                    </ul>
+                </td>
+                <td>
+                    {Object.values(news.recent)[activeNews]}
+                </td>
+            </tr>
+            </tbody>
+        </table>
     )
 }
-
-// export default ProfilePage
-// module.exports = ProfilePage
