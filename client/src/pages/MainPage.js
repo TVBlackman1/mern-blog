@@ -14,7 +14,7 @@ export const MainPage = () => {
         const data = await request('/api/main', 'POST')
         console.log(data)
         setLoadedNews(data)
-    }, [loadedNews])
+    }, [request])
 
 
     const renderComponent = ({ currentTheme, toggleTheme }) => {
@@ -41,6 +41,3 @@ export const MainPage = () => {
         <ThemeContext.Consumer>{theme => renderComponent(theme)}</ThemeContext.Consumer>
     )
 }
-
-// export default MainPage
-// module.exports = MainPage

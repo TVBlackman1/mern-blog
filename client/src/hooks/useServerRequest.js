@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
 // request to server with json body
 export const useServerRequest = () => {
