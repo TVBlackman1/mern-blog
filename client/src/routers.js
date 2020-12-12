@@ -1,7 +1,5 @@
 import React from "react";
 import { MainPage } from "./pages/MainPage"
-import { AuthPage } from "./pages/AuthPage"
-import { ProfilePage } from "./pages/ProfilePage"
 
 import {
     Switch,
@@ -17,12 +15,6 @@ export const Routers = () => {
             <Switch>
                 <Route path={"/main"}>
                     <MainPage />
-                </Route>
-                <Route path={"/auth"}>
-                    <AuthPage />
-                </Route>
-                <Route path={"/profile"}>
-                    <ProfilePage />
                 </Route>
                 <Redirect to={"/main"} />
             </Switch>
