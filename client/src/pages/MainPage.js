@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import "../styles/app.css"
+import "../styles/page-header.css"
 import classNames from "classnames";
 import { themes, ThemeContext } from "../context/ThemeContext";
 import {useServerRequest} from "../hooks/useServerRequest";
@@ -18,14 +19,16 @@ export const MainPage = () => {
 
 
     const renderComponent = ({ currentTheme, toggleTheme }) => {
-        const styleBackground = classNames({
-            "blue lighten-5" : currentTheme === themes.light,
-            "grey darken-2" : currentTheme === themes.dark,
-            "pink accent-1" : currentTheme === themes.rose,
+        const styleTheme = classNames({
+            "light-theme" : currentTheme === themes.light,
+            "dark-theme" : currentTheme === themes.dark,
+            "rose-theme" : currentTheme === themes.rose,
         })
         return (
-            <div className={styleBackground}>
-                <h1>Main page</h1>
+            <div className={styleTheme}>
+                <div className={"page-header " + styleTheme}>
+                    <h1>Main page</h1>
+                </div>
                 <button className="waves-effect waves-light btn" onClick={getRecentNews}>
                     <MaterialIcon icon="library_books" size='small'/>
                     Latest news

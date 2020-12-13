@@ -1,0 +1,31 @@
+.page-header {
+    display: flex;
+    align-items: center;
+    margin: 2em 0;
+    justify-content: center;
+    height: 10em;
+    background-image: url("../images/main-page-header-background.jpg");
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid black;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    margin: 0;
+    color: #f1f8e9;
+}
+
+.page-header.light-theme h1 {
+    color: #f1f8e9;
+}
+
+.page-header.dark-theme h1 {
+    color: #424242;
+}
+
+.page-header.rose-theme h1 {
+    color: #ad1457;
+}
