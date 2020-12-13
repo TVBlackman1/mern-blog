@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import "../styles/app.css"
+import "../styles/main-page.css"
 import "../styles/page-header.css"
 import classNames from "classnames";
 import { themes, ThemeContext } from "../context/ThemeContext";
@@ -12,9 +13,14 @@ export const MainPage = () => {
     const [loadedNews, setLoadedNews] = useState(null)
     const { request } = useServerRequest()
     const getRecentNews = useCallback(async () => {
-        const data = await request('/api/main', 'POST')
-        console.log(data)
-        setLoadedNews(data)
+        try {
+            const data = await request('/api/main', 'POST')
+            console.log(data)
+            setLoadedNews(data)
+        } catch (e) {
+            setLoadedNews({recent: ""})
+
+        }
     }, [request])
 
 
@@ -29,13 +35,15 @@ export const MainPage = () => {
                 <div className={"page-header " + styleTheme}>
                     <h1>Main page</h1>
                 </div>
-                <button className="waves-effect waves-light btn" onClick={getRecentNews}>
-                    <MaterialIcon icon="library_books" size='small'/>
-                    Latest news
-                </button>
-                <div className={"container"}>
-                    {loadedNews && <RecentNews news={loadedNews} />}
-                </div>
+                <main>
+                    <button className={"btn-get-recent-news " + styleTheme} onClick={getRecentNews}>
+                        <MaterialIcon icon="library_books" size='small'/>
+                        Latest news
+                    </button>
+                    <div className={"container"}>
+                        {loadedNews && <RecentNews news={loadedNews} />}
+                    </div>
+                </main>
             </div>
         )
     }

@@ -1,8 +1,9 @@
 .page-header {
     display: flex;
     align-items: center;
-    margin: 2em 0;
     justify-content: center;
+    text-align: center;
+    margin: 2em 0;
     height: 10em;
     background-image: url("../images/main-page-header-background.jpg");
     background-repeat: no-repeat;
