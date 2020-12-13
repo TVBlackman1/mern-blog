@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const config = require('config')
 
 const app = express()
@@ -17,7 +18,18 @@ app.get('/', (req, res) => {
     res.send("Main page")
 })
 
-app.listen(PORT, () => {
-    console.log(`Express app started on port ${PORT}`)
-    console.log(`http://localhost:${PORT}`)
-})
+
+try {
+    await mongoose.connect(config.get('mongodbURL'), {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    })
+
+    app.listen(PORT, () => {
+        console.log(`Express app started on port ${PORT}`)
+        console.log(`http://localhost:${PORT}`)
+    })
+} catch (e) {
+    console.log(e.message)
+}
