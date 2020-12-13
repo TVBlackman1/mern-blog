@@ -19,17 +19,21 @@ app.get('/', (req, res) => {
 })
 
 
-try {
-    await mongoose.connect(config.get('mongodbURL'), {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true
-    })
+async function start() {
+    try {
+        await mongoose.connect(config.get('mongodbURL'), {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true
+        })
 
-    app.listen(PORT, () => {
-        console.log(`Express app started on port ${PORT}`)
-        console.log(`http://localhost:${PORT}`)
-    })
-} catch (e) {
-    console.log(e.message)
+        app.listen(PORT, () => {
+            console.log(`Express app started on port ${PORT}`)
+            console.log(`http://localhost:${PORT}`)
+        })
+    } catch (e) {
+        console.log(e.message)
+    }
 }
+
+start()

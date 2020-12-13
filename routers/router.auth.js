@@ -14,8 +14,6 @@ router.get('/login', (req, res) => {
 
 // /api/auth/register
 router.get('/register', (req, res) => {
-    res.send("Register page")
-
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
         login: "tmp_name",
@@ -31,7 +29,6 @@ router.get('/register', (req, res) => {
             console.log(error)
             res.status(500).json("Server error")
         })
-    res.status()
 })
 
 module.exports = router
