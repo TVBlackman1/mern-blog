@@ -8,8 +8,6 @@ const userSchema = mongoose.Schema({
 
 const UserModel = mongoose.model('User', userSchema)
 
-// module.exports = mongoose.model('User', userSchema)
-
 const tryRegister = async ({login, password}) => {
     const alreadyInDB = await UserModel.findOne({login})
 
@@ -25,13 +23,9 @@ const tryRegister = async ({login, password}) => {
 const tryLogin = async ({login, password}) => {
     const alreadyInDB = await UserModel.findOne({login})
 
-    if(!alreadyInDB) {
-        const user = new UserModel({_id: new mongoose.Types.ObjectId(), login, password})
-        await user.save()
-        return { status: 201, message: "Account was created" }
-    } else {
-        return { status: 400, message: "Account already exist" }
-    }
+    if (alreadyInDB && alreadyInDB.password === password)
+        return { status: 200, message: "Login" }
+    return { status: 400, message: "Values is not correct" }
 }
 
 const UserAPI = {

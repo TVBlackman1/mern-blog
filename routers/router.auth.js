@@ -9,8 +9,24 @@ const requestDatetime = require('../middleware/request-datetime')
 router.use(requestDatetime)
 
 // /api/auth/login
-router.post('/login', (req, res) => {
-    res.send("Login page")
+router.post('/login', [
+        check('login', 'no login').exists(),
+        check('password', 'no password').exists()
+    ],
+    async (req, res) => {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: "Not correct values"
+            })
+        }
+        const {login, password} = req.body
+        console.log("Get:",login, password)
+
+        const logRes = await User.tryLogin({login, password})
+        console.log(logRes)
+        res.json(logRes)
 })
 
 // /api/auth/register
@@ -29,26 +45,10 @@ router.post('/register', [
         const {login, password} = req.body
         console.log("Get:",login, password)
 
-        // const alreadyInDB = await User.findOne({login})
-        // console.log("alreadyInDB", alreadyInDB)
-        //
-        // if(!alreadyInDB) {
-        //     const user = new User({ _id: new mongoose.Types.ObjectId(), login, password })
-        //     user.save()
-        //         .then(result => {
-        //             console.log(result)
-        //             res.status(201).json("Account was created")
-        //
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //             res.status(500).json("Server error")
-        //         })
-        // } else {
-        //     console.log("Dont add")
-        // }
         const regRes = await User.tryRegister({login, password})
         console.log(regRes)
-})
+        res.json(regRes)
+
+    })
 
 module.exports = router
