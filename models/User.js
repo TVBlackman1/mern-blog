@@ -6,4 +6,37 @@ const userSchema = mongoose.Schema({
     password: mongoose.Schema.Types.String
 })
 
-module.exports = mongoose.model('User', userSchema)
+const UserModel = mongoose.model('User', userSchema)
+
+// module.exports = mongoose.model('User', userSchema)
+
+const tryRegister = async ({login, password}) => {
+    const alreadyInDB = await UserModel.findOne({login})
+
+    if(!alreadyInDB) {
+        const user = new UserModel({_id: new mongoose.Types.ObjectId(), login, password})
+        await user.save()
+        return { status: 201, message: "Account was created" }
+    } else {
+        return { status: 400, message: "Account already exist" }
+    }
+}
+
+const tryLogin = async ({login, password}) => {
+    const alreadyInDB = await UserModel.findOne({login})
+
+    if(!alreadyInDB) {
+        const user = new UserModel({_id: new mongoose.Types.ObjectId(), login, password})
+        await user.save()
+        return { status: 201, message: "Account was created" }
+    } else {
+        return { status: 400, message: "Account already exist" }
+    }
+}
+
+const UserAPI = {
+    tryRegister,
+    tryLogin
+}
+
+module.exports = UserAPI

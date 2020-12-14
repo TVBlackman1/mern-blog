@@ -48,7 +48,8 @@ export const AuthPage = () => {
                     <form onSubmit={submit} method={"POST"} className={""}>
                         <input name="login" type="text" onChange={onChangeFormValues}/>
                         <input name="password" type="password" onChange={onChangeFormValues}/>
-                        <button type="submit" disabled={loading}>Register</button>
+                        <button type="submit">Register</button>
+                        {/*disabled={loading}*/}
                     </form>
                 {/*    <button className={"btn-get-recent-news " + styleTheme} onClick={getRecentNews}>*/}
                 {/*    <MaterialIcon icon="library_books" size='small'/>*/}
