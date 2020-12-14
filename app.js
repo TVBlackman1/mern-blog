@@ -4,6 +4,8 @@ const config = require('config')
 
 const app = express()
 
+app.use(express.json({ extended: true }))
+
 const PORT = config.get('PORT') || 5000
 
 const routerMain = require('./routers/router.main')
@@ -17,7 +19,7 @@ app.use('/api/auth', routerAuth)
 app.get('/', (req, res) => {
     res.send("Main page")
 })
-
+//
 
 async function start() {
     try {

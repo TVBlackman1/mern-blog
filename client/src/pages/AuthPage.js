@@ -10,32 +10,14 @@ import MaterialIcon from "material-icons-react";
 
 
 export const AuthPage = () => {
-    // const [loadedNews, setLoadedNews] = useState(null)
-    // const { request } = useServerRequest()
-    // const getRecentNews = useCallback(async () => {
-    //     try {
-    //         const data = await request('/api/main', 'POST')
-    //         console.log(data)
-    //         setLoadedNews(data)
-    //     } catch (e) {
-    //         setLoadedNews({recent: ""})
-    //
-    //     }
-    // }, [request])
+
     const { request, loading } = useServerRequest()
     const [formData, setFormData] = useState({password: "", login: ""})
 
     const sendForm = useCallback(async () => {
         try {
-            const sendingData = {...formData}
-            console.log(sendingData)
-            const data = await request('/api/auth/register', 'POST', sendingData)
-            console.log(data)
-            // setLoadedNews(data)
+            const data = await request('/api/auth/register', 'POST', { ...formData})
         } catch (e) {
-            // setLoadedNews({recent: ""})
-            //a as
-
         }
     }, [request, formData])
 
@@ -43,7 +25,6 @@ export const AuthPage = () => {
         const value = event.target.value
         const inputName = event.target.name
         setFormData({...formData, [inputName]:value})
-        // console.log(value)
     }
 
     function submit(event) {

@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const User = require('../models/User')
 
 const requestDatetime = require('../middleware/request-datetime')
-// router.use(requestDatetime)
+router.use(requestDatetime)
 
 // /api/auth/login
 router.post('/login', (req, res) => {
@@ -18,16 +18,20 @@ router.post('/register', [
         check('login', 'no login').exists(),
         check('password', 'no password').exists()
     ],
-    (req, res) => {
-        const errors = validationResult(req)
-        if(!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array(),
-                message: "Некорректные данные при регистрации"
-            })
-        }
-        const {login, password} = req.body
-        console.log("Get:",login, password)
+    async (req, res) => {
+        console.log("Body: ", req.body)
+        res.json({"res": "no"})
+        //
+        //
+        // const errors = validationResult(req)
+        // if(!errors.isEmpty()) {
+        //     return res.status(400).json({
+        //         errors: errors.array(),
+        //         message: "Некорректные данные при регистрации"
+        //     })
+        // }
+        // const {login, password} = req.body
+        // console.log("Get:",login, password)
         // const user = new User({
         //     _id: new mongoose.Types.ObjectId(),
         //     login: "new",
