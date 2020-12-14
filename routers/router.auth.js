@@ -8,15 +8,16 @@ const requestDatetime = require('../middleware/request-datetime')
 router.use(requestDatetime)
 
 // /api/auth/login
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
     res.send("Login page")
 })
 
 // /api/auth/register
-router.get('/register', (req, res) => {
+router.post('/register', (req, res) => {
+    console.log("Get:",req)
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
-        login: "tmp_name",
+        login: "new",
         password: "120474ba"
     })
     user.save()

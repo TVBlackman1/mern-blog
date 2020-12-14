@@ -5,12 +5,13 @@ export const useServerRequest = () => {
     const [loading, setLoading] = useState(false)
     const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
         setLoading(true)
+        console.log(body, "was sent")
         if(body) {
             headers['Content-Type'] = 'application/json;charset=utf-8'
             body = JSON.stringify(body)
         }
 
-        const response = await fetch(url, {method: method, headers: headers})
+        const response = await fetch(url, {method: method, body: body, headers: headers})
 
         const data = response.status === 200 ? await response.json() : null
 
@@ -20,6 +21,7 @@ export const useServerRequest = () => {
         } else {
             throw new Error("server problem")
         }
+        //
 
     }, [])
 

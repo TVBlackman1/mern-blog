@@ -1,0 +1,15 @@
+form {
+    margin: auto;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+form input {
+    background-color: white!important;
+    border: 1px solid steelblue!important;
+    border-radius: 20px!important;
+    padding: 4px!important;
+    box-sizing: border-box;
+}

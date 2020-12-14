@@ -22,19 +22,32 @@ export const AuthPage = () => {
     //
     //     }
     // }, [request])
-
     const { request, loading } = useServerRequest()
     const [formData, setFormData] = useState({password: "", login: ""})
+
+    const sendForm = useCallback(async () => {
+        try {
+            const sendingData = {...formData}
+            console.log(sendingData)
+            const data = await request('/api/auth/register', 'POST', sendingData)
+            console.log(data)
+            // setLoadedNews(data)
+        } catch (e) {
+            // setLoadedNews({recent: ""})
+            //a as
+
+        }
+    }, [request, formData])
 
     function onChangeFormValues(event) {
         const value = event.target.value
         const inputName = event.target.name
         setFormData({...formData, [inputName]:value})
-        console.log(value)
+        // console.log(value)
     }
 
     function submit(event) {
-        console.log(formData)
+        sendForm();
         event.preventDefault();
     }
 
@@ -51,10 +64,10 @@ export const AuthPage = () => {
                     <h1>Main page</h1>
                 </div>
                 <main>
-                    <form onSubmit={submit} method={"POST"}>
-                        <input name="login" type="text"M onChange={onChangeFormValues}/>
+                    <form onSubmit={submit} method={"POST"} className={""}>
+                        <input name="login" type="text" onChange={onChangeFormValues}/>
                         <input name="password" type="password" onChange={onChangeFormValues}/>
-                        <button type="submit">Register</button>
+                        <button type="submit" disabled={loading}>Register</button>
                     </form>
                 {/*    <button className={"btn-get-recent-news " + styleTheme} onClick={getRecentNews}>*/}
                 {/*    <MaterialIcon icon="library_books" size='small'/>*/}
