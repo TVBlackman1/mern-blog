@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
 const UserModel = mongoose.model('User', userSchema)
 
 const tryRegister = async ({login, password}) => {
+    // TODO add jwt and crypt
     const alreadyInDB = await UserModel.findOne({login})
 
     if(!alreadyInDB) {
@@ -34,3 +35,11 @@ const UserAPI = {
 }
 
 module.exports = UserAPI
+
+userSchema.methods.tryLogin = async () => {
+    // TODO
+}
+
+userSchema.methods.tryRegister = async () => {
+    // TODO
+}
