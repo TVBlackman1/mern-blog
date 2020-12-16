@@ -7,19 +7,13 @@ import { themes, ThemeContext } from "../context/ThemeContext";
 import {useServerRequest} from "../hooks/useServerRequest";
 import {RecentNews} from "../component/RecentNews";
 import MaterialIcon from "material-icons-react";
+import {useAuthRequest} from "../hooks/useAuthRequest";
 
 
 export const AuthPage = () => {
 
-    const { request, loading } = useServerRequest()
+    const { login, register, loading } = useAuthRequest()
     const [formData, setFormData] = useState({password: "", login: ""})
-
-    const sendForm = useCallback(async () => {
-        try {
-            const data = await request('/api/auth/register', 'POST', { ...formData})
-        } catch (e) {
-        }
-    }, [request, formData])
 
     function onChangeFormValues(event) {
         const value = event.target.value
@@ -27,9 +21,14 @@ export const AuthPage = () => {
         setFormData({...formData, [inputName]:value})
     }
 
-    function submit(event) {
-        sendForm();
-        event.preventDefault();
+    function submitRegister(event) {
+        register(formData)
+        event.preventDefault()
+    }
+
+    function submitLogin(event) {
+        login(formData)
+        event.preventDefault()
     }
 
 
@@ -45,11 +44,16 @@ export const AuthPage = () => {
                     <h1>Main page</h1>
                 </div>
                 <main>
-                    <form onSubmit={submit} method={"POST"} className={""}>
+                    <form onSubmit={submitRegister} className={""}>
                         <input name="login" type="text" onChange={onChangeFormValues}/>
                         <input name="password" type="password" onChange={onChangeFormValues}/>
-                        <button type="submit" disabled={loading}>Register</button>
-                        {/*disabled={loading}*/}
+                        <button name="submitRegister" type="submit" disabled={loading}>Sign up</button>
+                    </form>
+                    <div>-OR-</div>
+                    <form onSubmit={submitLogin} method={"POST"} className={""}>
+                        <input name="login" type="text" onChange={onChangeFormValues}/>
+                        <input name="password" type="password" onChange={onChangeFormValues}/>
+                        <button name="submitLogin" type="submit" disabled={loading}>Sign in</button>
                     </form>
                 {/*    <button className={"btn-get-recent-news " + styleTheme} onClick={getRecentNews}>*/}
                 {/*    <MaterialIcon icon="library_books" size='small'/>*/}

@@ -1,4 +1,5 @@
 {
   "PORT": 5000,
+  "jwtKey": "H4ASH4J1",
   "mongodbURL": "mongodb://tvblackman1:120474ba@clustermernblog-shard-00-00.ljk6v.mongodb.net:27017,clustermernblog-shard-00-01.ljk6v.mongodb.net:27017,clustermernblog-shard-00-02.ljk6v.mongodb.net:27017/appDB?ssl=true&replicaSet=atlas-i0w3hu-shard-0&authSource=admin&retryWrites=true&w=majority"
 }
