@@ -1,14 +1,16 @@
 import { useCallback } from 'react'
 
 import {useServerRequest} from "./useServerRequest";
+import {useUserToken} from "./useUserToken";
+
+const storageName = "userData"
 
 export function useAuthRequest() {
     const { request, loading } = useServerRequest()
+    const {saveToken, getToken, removeToken} = useUserToken()
     const auth = useCallback(async (router, _data) => {
-        console.log("path:", '/api/auth/'+router)
         try {
             const data = await request('/api/auth/'+router, 'POST', { ..._data})
-            console.log(data)
             return data
         } catch (e) {
             return null
@@ -17,6 +19,12 @@ export function useAuthRequest() {
 
     const login = async (data) => {
         const retData = await auth('login', data);
+        if( retData.status === 200) {
+            console.log("Success login")
+            saveToken(retData.token)
+        } else {
+            console.log("Failed log")
+        }
     }
 
     const register = async (data) => {

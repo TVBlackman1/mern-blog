@@ -1,12 +1,9 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import "../styles/app.css"
 import "../styles/auth-form.css"
 import "../styles/page-header.css"
 import classNames from "classnames";
 import { themes, ThemeContext } from "../context/ThemeContext";
-import {useServerRequest} from "../hooks/useServerRequest";
-import {RecentNews} from "../component/RecentNews";
-import MaterialIcon from "material-icons-react";
 import {useAuthRequest} from "../hooks/useAuthRequest";
 
 
@@ -55,13 +52,6 @@ export const AuthPage = () => {
                         <input name="password" type="password" onChange={onChangeFormValues}/>
                         <button name="submitLogin" type="submit" disabled={loading}>Sign in</button>
                     </form>
-                {/*    <button className={"btn-get-recent-news " + styleTheme} onClick={getRecentNews}>*/}
-                {/*    <MaterialIcon icon="library_books" size='small'/>*/}
-                {/*    Latest news*/}
-                {/*</button>*/}
-                {/*    <div className={"container"}>*/}
-                {/*        {loadedNews && <RecentNews news={loadedNews} />}*/}
-                {/*    </div>*/}
                 </main>
             </div>
         )
