@@ -8,6 +8,7 @@ import {
     Redirect
 
 } from "react-router-dom";
+import {ProfilePage} from "./pages/ProfilePage";
 
 
 export const Routers = () => {
@@ -20,11 +21,14 @@ export const Routers = () => {
                 <Route path={"/auth"}>
                     <AuthPage />
                 </Route>
+                <Route path={"/profile"}>
+                    <ProfilePage />
+                </Route>
                 <Redirect to={"/main"} />
             </Switch>
         </React.Fragment>
     )
 }
-
+//
 // export default Routers
 // module.exports = Routers

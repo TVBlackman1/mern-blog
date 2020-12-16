@@ -7,10 +7,10 @@ const storageName = "userData"
 
 export function useAuthRequest() {
     const { request, loading } = useServerRequest()
-    const {saveToken, getToken, removeToken} = useUserToken()
+    const { saveToken, removeToken } = useUserToken()
     const auth = useCallback(async (router, _data) => {
         try {
-            const data = await request('/api/auth/'+router, 'POST', { ..._data})
+            const data = await request('/api/auth/'+router, 'POST', { ..._data })
             return data
         } catch (e) {
             return null
@@ -31,7 +31,11 @@ export function useAuthRequest() {
         const retData = await auth('register', data);
     }
 
-    return {login, register, loading}
+    const logout = () => {
+        console.log("remove token")
+        removeToken()
+    }
+    return {login, register, logout, loading}
 }
 
 
