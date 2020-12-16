@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 const themes = {
-    light: 'light',
-    dark: 'dark',
-    rose: 'rose'
+    light: 'light-theme',
+    dark: 'dark-theme',
+    rose: 'rose-theme'
 }
 
 

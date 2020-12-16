@@ -26,9 +26,7 @@ export const MainPage = () => {
 
     const renderComponent = ({ currentTheme, toggleTheme }) => {
         const styleTheme = classNames({
-            "light-theme" : currentTheme === themes.light,
-            "dark-theme" : currentTheme === themes.dark,
-            "rose-theme" : currentTheme === themes.rose,
+            [currentTheme]: true
         })
         return (
             <div className={styleTheme}>
