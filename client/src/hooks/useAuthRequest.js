@@ -1,9 +1,7 @@
 import { useCallback } from 'react'
+import { useServerRequest } from "./useServerRequest";
+import { useUserToken } from "./useUserToken";
 
-import {useServerRequest} from "./useServerRequest";
-import {useUserToken} from "./useUserToken";
-
-const storageName = "userData"
 
 export function useAuthRequest() {
     const { request, loading } = useServerRequest()
