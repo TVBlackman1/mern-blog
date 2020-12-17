@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "bootstrap": "^5.0.0-beta1",
     "config": "^3.3.3",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
