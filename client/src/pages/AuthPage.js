@@ -41,13 +41,13 @@ export const AuthPage = () => {
                 <main>
                     <form onSubmit={submitRegister} className={""}>
                         <input name="login" type="text" onChange={onChangeFormValues}/>
-                        <input name="password" type="password" onChange={onChangeFormValues}/>
+                        <input name="password" type="password" autoComplete="new-password" onChange={onChangeFormValues}/>
                         <button name="submitRegister" type="submit" disabled={loading}>Sign up</button>
                     </form>
                     <div>-OR-</div>
                     <form onSubmit={submitLogin} method={"POST"} className={""}>
                         <input name="login" type="text" onChange={onChangeFormValues}/>
-                        <input name="password" type="password" onChange={onChangeFormValues}/>
+                        <input name="password" type="password" autoComplete="new-password" onChange={onChangeFormValues}/>
                         <button name="submitLogin" type="submit" disabled={loading}>Sign in</button>
                     </form>
                 </main>

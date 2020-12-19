@@ -7,9 +7,21 @@ form {
 }
 
 form input {
-    background-color: white!important;
-    border: 1px solid steelblue!important;
-    border-radius: 20px!important;
-    padding: 4px!important;
+    background-color: #e8bedeee;
+    border: 1px solid steelblue;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 1px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #DB99CC;
+    color: #F2FCD2;
+    font-size: 22px;
+    border: 1px solid steelblue;
+    border-radius: 4px;
+    padding: 12px;
+    /*margin-bottom: 12px;*/
     box-sizing: border-box;
 }
