@@ -47,7 +47,9 @@ export const RecentNews = ({news}) => {
                         </ul>
                     </td>
                     <td className={"descriptions"}>
-                        {Object.values(news.recent)[activeNews]}
+                        <div className={"descriptions"}>
+                            {Object.values(news.recent)[activeNews]}
+                        </div>
                     </td>
                 </tr>
                 </tbody>

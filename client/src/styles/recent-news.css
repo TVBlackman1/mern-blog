@@ -22,15 +22,19 @@ col.column-group-description {
 td.titles {
     display: flex;
     align-items: start;
-    min-height: 400px;
-    max-height: 400px;
+    /*min-height: 400px;*/
+    /*max-height: 400px;*/
 }
 
 td.descriptions {
-    overflow-y: hidden;
-    min-height: 400px;
-    max-height: 400px;
+    padding: 20px;
+}
 
+div.descriptions {
+    height: 400px;
+    overflow-y: scroll;
+    text-align: justify;
+    padding-right: 10px;
 }
 
 ul.list-news {
