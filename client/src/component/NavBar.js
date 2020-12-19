@@ -38,7 +38,7 @@ export const NavBar = () => {
                 </nav>
                 <div className="right">
                     <ul className="right">
-                        <li><button>Тема</button></li>
+                        <li><button onClick={toggleTheme}>Тема</button></li>
                         <li><NavLink style={{ textDecoration: 'none' }} to={"/auth"}><p>Войти</p></NavLink></li>
                     </ul>
                 </div>

@@ -2,23 +2,39 @@ main {
     width: 90%;
     margin: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     /*background-color: #ad1457;*/
 }
 
 .btn-get-recent-news {
-    width: 30em;
+    width: 150px;
+    height: 40px;
     position: relative;
     margin-top: 20px;
-    /*display: grid;*/
-    /*float: left;*/
+    padding: 4px 20px;
+    box-sizing: content-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
     border-radius: 12px;
     border: 1px solid #a0a0a0;
+    transition-property: background-color, font-size;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    /*display: block;*/
 }
 
 .btn-get-recent-news.light-theme {
     background-color: #f1f8e9;
+}
+
+.btn-get-recent-news.light-theme:hover {
+    background-color: #d8ebc3;
+    font-size: 17px;
 }
 
 .btn-get-recent-news.dark-theme {
@@ -27,4 +43,8 @@ main {
 
 .btn-get-recent-news.rose-theme {
     background-color: #ad1457;
+}
+
+.btn-get-recent-news.logo {
+    color: red;
 }

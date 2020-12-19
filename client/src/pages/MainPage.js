@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { themes, ThemeContext } from "../context/ThemeContext";
 import {useServerRequest} from "../hooks/useServerRequest";
 import {RecentNews} from "../component/RecentNews";
+import { ReactComponent as LogoNews } from '../icons/card-text.svg';
 import MaterialIcon from "material-icons-react";
 
 
@@ -31,12 +32,15 @@ export const MainPage = () => {
         return (
             <div className={styleTheme}>
                 <div className={"page-header " + styleTheme}>
-                    <h1>Main page</h1>
+                    <h1>Тебя окружают миллионы</h1>
+                    <h4>Узнай о их жизни больше</h4>
                 </div>
                 <main>
                     <button className={"btn-get-recent-news " + styleTheme} onClick={getRecentNews}>
-                        <MaterialIcon icon="library_books" size='small'/>
-                        Latest news
+                        {/*<MaterialIcon icon="library_books" size='small'/>*/}
+                        {/*<img src='../icons/card-text.svg' width="90" height="90" alt="no image"/>*/}
+                        <LogoNews width="22" height="22" />
+                        Рекомендуемое
                     </button>
                     <div className={"container"}>
                         {loadedNews && <RecentNews news={loadedNews} />}
