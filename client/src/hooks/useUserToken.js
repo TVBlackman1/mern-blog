@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useAuth } from "../context/AuthContext"
 const tokenNameStorage = "token"
 
@@ -14,13 +13,13 @@ export function useUserToken() {
         auth.setToken(token)
     }
 
-    // function getToken() {
-    //     try {
-    //         return JSON.parse(localStorage.getItem(tokenNameStorage)).token
-    //     } catch (e) {
-    //         return null
-    //     }
-    // }
+    function getToken() {
+        try {
+            return JSON.parse(localStorage.getItem(tokenNameStorage)).token
+        } catch (e) {
+            return null
+        }
+    }
 
     function removeToken() {
         localStorage.removeItem(tokenNameStorage)
@@ -31,5 +30,5 @@ export function useUserToken() {
 
     }
 
-    return {saveToken, removeToken}
+    return { saveToken, removeToken, getToken }
 }
