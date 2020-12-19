@@ -29,11 +29,17 @@ export const MainPage = () => {
         const styleTheme = classNames({
             [currentTheme]: true
         })
+        const animatedStripe = classNames({
+            "animated-stripe": true,
+            "point": !loadedNews,
+            "stripe": loadedNews
+        })
+        console.log(animatedStripe)
         return (
             <div className={styleTheme}>
                 <div className={"page-header " + styleTheme}>
                     <h1>Тебя окружают миллионы</h1>
-                    <h4>Узнай о их жизни больше</h4>
+                    <h4>Узнай об их жизни больше</h4>
                 </div>
                 <main>
                     <button className={"btn-get-recent-news " + styleTheme} onClick={getRecentNews}>
@@ -43,6 +49,8 @@ export const MainPage = () => {
                         Рекомендуемое
                     </button>
                     <div className={"container"}>
+                        {/*{loadedNews}*/}
+                        <div className={animatedStripe}/>
                         {loadedNews && <RecentNews news={loadedNews} />}
                     </div>
                 </main>

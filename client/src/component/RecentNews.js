@@ -1,6 +1,7 @@
 import React, { useState }from 'react'
 import classNames from 'classnames'
 import {ThemeContext, themes} from '../context/ThemeContext'
+import '../styles/recent-news.css'
 
 
 export const RecentNews = ({news}) => {
@@ -19,18 +20,22 @@ export const RecentNews = ({news}) => {
             "pink accent-1" : currentTheme.mode === themes.rose,
         })
         return (
-            <table>
+            <table className={'recent-news'}>
+                <colgroup>
+                    <col className={"column-group-title"} />
+                    <col className={"column-group-description"} />
+                </colgroup>
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Details</th>
+                    <th>Последнее</th>
+                    <th>Подробнее</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr>
-                    <td>
-                        <ul id="nav-mobile" className="left collection grey darken-2">
+                    <td className={"titles"}>
+                        <ul id="nav-mobile" className="list-news">
                             {Object.keys(news.recent).map(function(newsTitle, i){
                                 return <li className={
                                     classNames( styleLi, {
@@ -41,7 +46,7 @@ export const RecentNews = ({news}) => {
                             })}
                         </ul>
                     </td>
-                    <td>
+                    <td className={"descriptions"}>
                         {Object.values(news.recent)[activeNews]}
                     </td>
                 </tr>
