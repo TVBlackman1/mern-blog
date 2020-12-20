@@ -36,19 +36,19 @@ export const RecentNews = ({news}) => {
                 <tr>
                     <td className={"titles"}>
                         <ul id="nav-mobile" className="list-news">
-                            {Object.keys(news.recent).map(function(newsTitle, i){
+                            {Object.values(news.recent).map(function(newsElements, i){
                                 return <li className={
                                     classNames( styleLi, {
                                         "active" : i === activeNews,
                                         "collection-item": true
                                     })
-                                } key={i} onClick={() => setActiveOnNews(i)}>{newsTitle}</li>;
+                                } key={i} onClick={() => setActiveOnNews(i)}>{newsElements.author}</li>;
                             })}
                         </ul>
                     </td>
                     <td className={"descriptions"}>
                         <div className={"descriptions"}>
-                            {Object.values(news.recent)[activeNews]}
+                            {Object.values(news.recent)[activeNews].content}
                         </div>
                     </td>
                 </tr>

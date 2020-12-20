@@ -9,19 +9,20 @@ table.recent-news {
 }
 
 col.column-group-title {
-    width: 30%;
+    /*width: 110px;*/
     /*color: #ad1457;*/
     background-color: #d7d9f2;
 }
 
 col.column-group-description {
-    width: 70%;
+    min-width: 400px;
     background-color: #ffe8d4;
 }
 
 td.titles {
     display: flex;
     align-items: start;
+    text-align: start;
     /*min-height: 400px;*/
     /*max-height: 400px;*/
 }
