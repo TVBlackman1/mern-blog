@@ -4,10 +4,13 @@ import classNames from 'classnames'
 import {ThemeContext, themes } from '../context/ThemeContext'
 import {useAuthRequest} from "../hooks/useAuthRequest";
 import "../styles/nav.css"
+import {useAuth} from "../context/AuthContext";
 
 
 export const NavBar = () => {
     const { logout } = useAuthRequest()
+    const auth = useAuth()
+
 
     const renderComponent = ({ currentTheme, toggleTheme }) => {
         const styleTheme = classNames({
@@ -33,7 +36,8 @@ export const NavBar = () => {
                 <div className="right">
                     <ul className="right">
                         <li><button className={"themeChange " + styleTheme} onClick={toggleTheme}>Тема</button></li>
-                        <li><NavLink style={{ textDecoration: 'none' }} to={"/auth"}><p>Войти</p></NavLink></li>
+                        {!auth.token && <li><NavLink style={{ textDecoration: 'none' }} to={"/auth"}><p>Войти</p></NavLink></li>}
+                        {auth.token && <li onClick={logout}><p>Выйти</p></li>}
                     </ul>
                 </div>
             </header>
