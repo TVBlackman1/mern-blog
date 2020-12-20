@@ -1,3 +1,19 @@
-.dark {
-    background: #a0a0a0;
+div.App {
+    width: 100%;
+    min-height: 100vh;
+    /*margin-bottom: 50px;*/
+    /*background: #a0a0a0;*/
+    transition: 0.3s background-color;
+}
+
+div.App.light-theme {
+    background-color: #ffffff;
+}
+
+div.App.dark-theme {
+    background-color: #a0a0a0;
+}
+
+div.App.rose-theme {
+    background-color: #f7c8dd;
 }

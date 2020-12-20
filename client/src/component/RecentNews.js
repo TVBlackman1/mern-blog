@@ -14,46 +14,34 @@ export const RecentNews = ({news}) => {
     console.log(Object.keys(news.recent))
 
     const renderComponent = ({ currentTheme, toggleTheme }) => {
-        const styleLi = classNames({
-            "blue lighten-5" : currentTheme.mode === themes.light,
-            "grey darken-2" : currentTheme.mode === themes.dark,
-            "pink accent-1" : currentTheme.mode === themes.rose,
+        const styleTheme = classNames({
+            [currentTheme]: true
         })
-        return (
-            <table className={'recent-news'}>
-                <colgroup>
-                    <col className={"column-group-title"} />
-                    <col className={"column-group-description"} />
-                </colgroup>
-                <thead>
-                <tr>
-                    <th>Последнее</th>
-                    <th>Подробнее</th>
-                </tr>
-                </thead>
 
-                <tbody>
-                <tr>
-                    <td className={"titles"}>
-                        <ul id="nav-mobile" className="list-news">
-                            {Object.values(news.recent).map(function(newsElements, i){
-                                return <li className={
-                                    classNames( styleLi, {
-                                        "active" : i === activeNews,
-                                        "collection-item": true
-                                    })
-                                } key={i} onClick={() => setActiveOnNews(i)}>{newsElements.author}</li>;
-                            })}
-                        </ul>
-                    </td>
-                    <td className={"descriptions"}>
-                        <div className={"descriptions"}>
-                            {Object.values(news.recent)[activeNews].content}
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+        return (
+            <div className={'recent-news ' + styleTheme}>
+                <div className={'recent-news-type-header ' + styleTheme}>
+                    Последнее
+                </div>
+                <div className={'recent-news-type-header ' + styleTheme}>
+                    Содержимое
+                </div>
+                <div className={"authors " + styleTheme}>
+                    <ul id="nav-mobile" className="authors">
+                        {Object.values(news.recent).map(function(newsElements, i){
+                            return <li className={
+                                classNames( styleTheme, {
+                                    "active" : i === activeNews,
+                                    "author": true
+                                })
+                            } key={i} onClick={() => setActiveOnNews(i)}>{newsElements.author}</li>;
+                        })}
+                    </ul>
+                </div>
+                <div className={"content " + styleTheme}>
+                    {Object.values(news.recent)[activeNews].content}
+                </div>
+            </div>
         )
     }
 

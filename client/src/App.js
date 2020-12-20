@@ -4,7 +4,8 @@ import { Routers } from "./routers"
 import {NavBar} from "./component/NavBar";
 import {ThemeProvider} from "./context/ThemeContext";
 import {AuthProvider} from "./context/AuthContext";
-import "./styles/app.css"
+import {Footer} from "./component/Footer";
+import {ThemedBody} from "./component/ThemedBody";
 
 
 export default function App() {
@@ -12,12 +13,13 @@ export default function App() {
     return (
         <AuthProvider>
             <ThemeProvider>
-                <div className="App">
+                <ThemedBody>
                     <BrowserRouter>
                         <NavBar />
                         <Routers />
+                        {/*<Footer />*/}
                     </BrowserRouter>
-                </div>
+                </ThemedBody>
             </ThemeProvider>
         </AuthProvider>
   );

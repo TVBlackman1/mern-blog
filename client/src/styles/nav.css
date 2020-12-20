@@ -5,6 +5,7 @@ header {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    transition: 0.3s background-color;
 }
 
 header.light-theme {
@@ -12,11 +13,11 @@ header.light-theme {
 }
 
 header.dark-theme {
-    background-color: #fafafa;
+    background-color: #616161;
 }
 
 header.rose-theme {
-    background-color: #fafafa;
+    background-color: #f48fb1;
 }
 
 nav {
@@ -49,19 +50,30 @@ header nav ul.left li {
     padding: 0 12px;
     margin: 0;
     /*border: 1px solid black;*/
+    transition: 0.3s background-color;
+
 }
 
-header nav ul.left li:hover {
+header nav ul.left li.light-theme:hover {
     background-color: #3083CF;
 }
+
+header nav ul.left li.dark-theme:hover {
+    background-color: #292929;
+}
+
+header nav ul.left li.rose-theme:hover {
+    background-color: #e75480;
+}
+
 
 header nav ul.left li p {
     display: block;
     height: 100%;
     color: #f0f8ff;
     font-size: 22px;
-    text-decoration: none;
-    text-decoration-color: #ad1457;
+    /*text-decoration: none;*/
+    /*text-decoration-color: #ad1457;*/
     box-sizing: border-box;
     margin: 0;
 }
@@ -97,11 +109,25 @@ header ul.right li p {
     color: #f0f8ff;
 }
 
-header ul.right li button {
+button.themeChange {
     margin: 0;
-    color: #c7e5ff;
-    background-color: #18568E;
     border: none;
     border-radius: 10px;
     padding: 4px 10px;
+    transition: 0.3s background-color, color;
+}
+
+button.themeChange.light-theme {
+    background-color: #18568E;
+    color: #c7e5ff;
+}
+
+button.themeChange.dark-theme {
+    background-color: #424242;
+    color: #f5f5f5;
+}
+
+button.themeChange.rose-theme {
+    background-color: #ff4081;
+    color: #fce4ec;
 }

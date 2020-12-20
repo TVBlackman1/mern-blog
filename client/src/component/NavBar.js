@@ -13,12 +13,6 @@ export const NavBar = () => {
         const styleTheme = classNames({
             [currentTheme]: true
         })
-        const styleNav = classNames({
-            "blue lighten-5" : currentTheme === themes.light,
-            "grey darken-2" : currentTheme === themes.dark,
-            "pink accent-1" : currentTheme === themes.rose,
-        })
-
 
         return (
             // <ul className="nav nav-pills">
@@ -28,17 +22,17 @@ export const NavBar = () => {
             //     <li className="nav-item"><button className="waves-effect waves-light btn-small" onClick={toggleTheme}>Theme</button></li>
             //     <li className="nav-item"><button className="waves-effect waves-light btn-small" onClick={logout}>Выйти</button></li>
             // </ul>
-            <header>
+            <header className={styleTheme}>
                 <nav>
                     <ul className="left">
-                        <li><NavLink style={{ textDecoration: 'none' }} to={"/main"}><p>Главная</p></NavLink></li>
-                        <li><NavLink style={{ textDecoration: 'none' }} to={"/profile"}><p>Профиль</p></NavLink></li>
-                        <li><NavLink style={{ textDecoration: 'none' }} to={"/recommended"}><p>Рекомендации</p></NavLink></li>
+                        <li className={styleTheme}><NavLink style={{ textDecoration: 'none' }} to={"/main"}><p>Главная</p></NavLink></li>
+                        <li className={styleTheme}><NavLink style={{ textDecoration: 'none' }} to={"/profile"}><p>Профиль</p></NavLink></li>
+                        <li className={styleTheme}><NavLink style={{ textDecoration: 'none' }} to={"/recommended"}><p>Рекомендации</p></NavLink></li>
                     </ul>
                 </nav>
                 <div className="right">
                     <ul className="right">
-                        <li><button onClick={toggleTheme}>Тема</button></li>
+                        <li><button className={"themeChange " + styleTheme} onClick={toggleTheme}>Тема</button></li>
                         <li><NavLink style={{ textDecoration: 'none' }} to={"/auth"}><p>Войти</p></NavLink></li>
                     </ul>
                 </div>
