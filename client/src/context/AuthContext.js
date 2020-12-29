@@ -13,18 +13,20 @@ const useAuth = () => {
 
 
 function AuthProvider({ children }) {
-    const [token, setToken] = useState(null)
-    const userToken = useUserToken()
+    const [tokenContext, setContextToken] = useState(null)
+    const { setStorageToken, removeStorageToken, getStorageToken } = useUserToken()
 
     useEffect(() => {
-        const gettingToken = userToken.getToken()
-        if(gettingToken !== null) {
-            setToken(gettingToken)
-        }
-    })
+        setContextToken(getStorageToken())
+    }, [tokenContext])
+
+    function setToken(token) {
+        setContextToken(token)
+        token ? setStorageToken(token) : removeStorageToken()
+    }
 
     return (
-        <AuthContext.Provider value={{ token, setToken }}>
+        <AuthContext.Provider value={{ token: tokenContext, setToken }}>
             { children }
         </AuthContext.Provider>
     )

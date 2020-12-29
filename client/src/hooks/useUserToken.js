@@ -5,15 +5,13 @@ export function useUserToken() {
 
     const auth = useAuth()
     // args: token - String, token of user
-    function saveToken(token) {
+    function setStorageToken(token) {
         localStorage.setItem(tokenNameStorage, JSON.stringify({
             token: token
         }))
-        console.log(token)
-        auth.setToken(token)
     }
 
-    function getToken() {
+    function getStorageToken() {
         try {
             return JSON.parse(localStorage.getItem(tokenNameStorage)).token
         } catch (e) {
@@ -21,14 +19,11 @@ export function useUserToken() {
         }
     }
 
-    function removeToken() {
+    function removeStorageToken() {
         localStorage.removeItem(tokenNameStorage)
-        console.log(auth)
-        auth.setToken(null)
-        console.log("remove token")
 
 
     }
 
-    return { saveToken, removeToken, getToken }
+    return { setStorageToken, removeStorageToken, getStorageToken }
 }

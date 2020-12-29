@@ -1,11 +1,13 @@
 import { useCallback } from 'react'
 import { useServerRequest } from "./useServerRequest";
 import { useUserToken } from "./useUserToken";
+import {useAuth} from "../context/AuthContext";
 
 
 export function useAuthRequest() {
     const { request, loading } = useServerRequest()
     const { saveToken, removeToken } = useUserToken()
+    const authContext = useAuth()
     const auth = useCallback(async (router, _data) => {
         try {
             const data = await request('/api/auth/'+router, 'POST', { ..._data })
@@ -19,7 +21,7 @@ export function useAuthRequest() {
         const retData = await auth('login', data);
         if( retData.status === 200) {
             console.log("Success login")
-            saveToken(retData.token)
+            authContext.setToken(retData.token)
         } else {
             console.log("Failed log")
         }
@@ -31,7 +33,7 @@ export function useAuthRequest() {
 
     const logout = () => {
         console.log("remove token")
-        removeToken()
+        authContext.setToken(null)
     }
     return {login, register, logout, loading}
 }
